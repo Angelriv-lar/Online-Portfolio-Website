@@ -1,0 +1,151 @@
+/* =========================================
+   WHAT IS THIS FILE?
+   These rules change the layout at certain screen widths
+   so the site looks good on tablets and phones.
+   Breakpoints used:
+   - 1400px: large laptops / small desktops
+   - 1200px: tablets / small laptops
+   - 600px: phones
+   ========================================= */
+
+/* ====== Up to 1400px wide (large laptop) ====== */
+@media screen and (max-width: 1400px) {
+  /* Make the hero section a bit shorter and give room below */
+  #profile {
+    min-height: 83vh;
+    margin-bottom: 6rem;
+  }
+
+  /* Allow the two info cards to wrap to the next line if needed */
+  .about-containers {
+    flex-wrap: wrap;
+  }
+
+  /* Let these sections grow as tall as they need */
+  #contact,
+  #projects {
+    min-height: fit-content;
+  }
+}
+
+/* ====== Up to 1200px wide (tablet) ====== */
+@media screen and (max-width: 1200px) {
+  /* Hide the desktop nav; show the hamburger nav (mobile) */
+  #desktop-nav {
+    display: none;
+  }
+  #hamburger-nav {
+    display: flex;
+  }
+
+  /* Add a little top spacing around experience on tablets */
+  #experience,
+  .experience-details-container {
+    margin-top: 2rem;
+  }
+
+  /* Stack columns on top of each other instead of side-by-side */
+  #profile,
+  .section-container {
+    display: block;
+  }
+
+  /* Hide the decorative arrows (they don't add much on small screens) */
+  .arrow {
+    display: none;
+  }
+
+  /* Let sections decide their height based on content */
+  section,
+  .section-container {
+    min-height: fit-content;
+  }
+
+  /* Reduce the margins so content isn't too squeezed */
+  section {
+    margin: 0 5%;
+  }
+
+  /* Make the image boxes smaller and centered */
+  .section__pic-container {
+    width: 275px;
+    height: 275px;
+    margin: 0 auto 2rem;
+  }
+
+  .about-containers {
+    margin-top: 0;
+  }
+}
+
+/* ====== Up to 600px wide (phones) ====== */
+@media screen and (max-width: 600px) {
+  /* Avoid forcing a fixed height; let content take the space it needs */
+  #contact,
+  footer {
+    min-height: 40vh; /* NOTE: switched from 'height' to 'min-height' for safety */
+  }
+
+  #profile {
+    min-height: 83vh;
+    margin-bottom: 0;
+  }
+
+  article {
+    font-size: 1rem;
+  }
+
+  footer nav {
+    height: fit-content;
+    margin-bottom: 2rem;
+  }
+
+  /* Wrap long rows to avoid squishing */
+  .about-containers,
+  .contact-info-upper-container,
+  .btn-container {
+    flex-wrap: wrap;
+  }
+
+  .contact-info-container {
+    margin: 0;
+  }
+
+  /* Make nav links and contact text comfortably readable */
+  .contact-info-container p,
+  .nav-links li a {
+    font-size: 1rem;
+  }
+
+  .experience-sub-title {
+    font-size: 1.25rem;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  .section__pic-container {
+    width: auto;
+    height: 46vw; /* Scale height relative to screen width for balance */
+    justify-content: center;
+  }
+
+  .section__text__p2 {
+    font-size: 1.25rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .text-container {
+    text-align: justify; /* Distributes text edge-to-edge nicely */
+  }
+}

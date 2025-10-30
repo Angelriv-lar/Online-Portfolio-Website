@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<!--
+  This first line tells the browser we're using modern HTML (HTML5).
+  Think of it like setting the "language rules" for the page.
+-->
+<html lang="en">
+  <head>
+    <!-- The hidden "settings" area. Browsers and search engines use this info. -->
+    <meta charset="UTF-8" />
+    <!-- Makes the layout adjust to phone/tablet/desktop widths -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Short description that shows in search results -->
+    <meta name="description" content="Angel Rivas — Computer Science portfolio showcasing projects, experience, and contact information." />
+
+    <title>Angel Rivas • Portfolio</title>
+
+    <!-- Small icon shown in the browser tab (optional if you add /assets/favicon.ico) -->
+    <link rel="icon" href="favicon" />
+
+    <!-- The look-and-feel styles. We load general styles first, then small-screen tweaks. -->
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="mediaqueries.css" />
+  </head>
+  <body>
+    <!-- A "skip" link lets keyboard and screen-reader users jump straight to content -->
+    <a class="skip-link" href="#profile">Skip to main content</a>
+
+    <!--
+      HEADER contains the top area with logos and navigation.
+      We include two navs: a desktop version and a hamburger (mobile) version.
+      CSS shows/hides the correct one depending on screen size.
+    -->
+    <header>
+      <!-- Desktop navigation: visible on larger screens -->
+      <nav id="desktop-nav" aria-label="Primary">
+        <!-- "Logo" can be text; clicking it returns to top -->
+        <a href="#profile" class="logo" aria-label="Go to top">Angel Rivas</a>
+
+        <!-- The list of links to sections on this page -->
+        <ul class="nav-links" role="list">
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Mobile navigation: hamburger button opens a small menu -->
+      <nav id="hamburger-nav" aria-label="Primary (mobile)">
+        <a href="#profile" class="logo" aria-label="Go to top">Angel Rivas</a>
+
+        <!-- The button with three lines (the "hamburger") -->
+        <div class="hamburger-menu">
+          <!--
+            We use a real <button> for accessibility and keyboard support.
+            aria-expanded changes true/false when opened/closed.
+            aria-controls points to the menu it opens.
+          -->
+          <button
+            class="hamburger-icon"
+            id="hamburger-button"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+            type="button"
+          >
+            <!-- The three bars are empty spans styled with CSS -->
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <!-- The dropdown links for mobile -->
+          <ul id="mobile-menu" class="menu-links" role="list">
+            <!--
+              Each link closes the menu after you click, which feels nicer on phones.
+              We handle closing in script.js so we don't need inline JS here.
+            -->
+            <li><a href="#about" data-close-menu>About</a></li>
+            <li><a href="#experience" data-close-menu>Experience</a></li>
+            <li><a href="#projects" data-close-menu>Projects</a></li>
+            <li><a href="#contact" data-close-menu>Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <!-- MAIN holds the important page sections people came to see -->
+    <main>
+      <!--
+        PROFILE SECTION
+        A "section" groups related content. The id lets links jump here (#profile).
+      -->
+      <section id="profile" aria-labelledby="profile-title">
+        <!-- Picture area on the left -->
+        <div class="section__pic-container">
+          <!--
+            The alt text describes the image for people using screen readers
+            or if the image doesn't load.
+          -->
+          <img src="./logos/CarPicture.heic" alt="Headshot of Angel Rivas" />
+        </div>
+
+        <!-- Text area on the right -->
+        <div class="section__text">
+          <p class="section__text__p1">Hello, I'm</p>
+          <h1 id="profile-title" class="title">Angel Rivas</h1>
+          <p class="section__text__p2">Bachelors of Science, Computer Science</p>
+
+          <!-- Buttons to take action -->
+          <div class="btn-container">
+            <!--
+              Buttons are styled and wired up in script.js.
+              data-* attributes are simple labels our JS can "listen" for.
+            -->
+            <a class="btn btn-color-2" href="Resume.pdf" download> Download CV</a>
+
+            <button class="btn btn-color-1" data-jump-contact type="button">
+              Contact Info
+            </button>
+          </div>
+
+          <!-- Social icons that link to external sites
+          <div id="socials-container" aria-label="Social links">
+            <a
+              class="icon-link"
+              href="https://linkedin.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit my LinkedIn profile (opens in a new tab)"
+            >
+              <img
+                src="/logos/linkedin.png"
+                alt="LinkedIn logo"
+                class="icon"
+              />
+            </a>
+          -->
+
+            <a
+              class="icon-link"
+              href="https://github.com/Angelriv-lar/School-Projects.git"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit my GitHub profile (opens in a new tab)"
+            >
+              <img src="/logos/github.png" alt="GitHub logo" class="icon" />
+            </a>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- SCHOOL SECTION -->
+      <h1 id="about-title" class="title"> California State Dominguez Hills Allumnus</h1>
+      <h1 id="about-title" class="title"> 3.6 GPA</h1>
+
+      <!-- ABOUT SECTION -->
+      <section id="about" aria-labelledby="about-title">
+        <p class="section__text__p1">Get To Know More</p>
+        <h1 id="about-title" class="title">About Me</h1>
+
+        <!-- Two columns: image + details -->
+        <div class="section-container">
+          <div class="section__pic-container">
+            <img
+              src="./logos/TreePicture.jpg"
+              alt="Angel working on a laptop"
+              class="about-pic"
+            />
+          </div>
+
+          <div class="about-details-container">
+            <!-- Two small info cards (Experience / Education) -->
+            <div class="about-containers">
+              <div class="details-container">
+                <img
+                  src="/logos/experience.png"
+                  alt=""
+                  class="icon"
+                  aria-hidden="true"
+                />
+                <h3>Experience</h3>
+                <p>In School 3+ years<br />Computer Science</p>
+              </div>
+
+              <div class="details-container">
+                <img
+                  src="/logos/education.png"
+                  alt=""
+                  class="icon"
+                  aria-hidden="true"
+                />
+                <h3>Education in progress</h3>
+                <p>Bachelor of Science, Computer Science<br />Expected Graduation: May 2026</p>
+              </div>
+            </div>
+
+            <div class="text-container">
+              <!-- Placeholder paragraph; replace with your story -->
+              <p>
+                Motivated Computer Science undergraduate seeking a Web Application Developer/Software Engineer Internship. 
+                Skilled in Java, C++, and web development with HTML, CSS, and JavaScript. 
+                Experienced with development tools such as VS Code with experience in data structures. Eager to apply problem-solving 
+                skills and learn modern front-end technologies while contributing to impactful projects to gain experience
+                and develop my skills further in algorithms, AWS, Swift, and more!
+
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Little arrow that scrolls to the next section -->
+        <button class="icon arrow" data-jump-experience type="button" aria-label="Scroll to Experience">
+          <img src="./logos/arrow.png" alt="" aria-hidden="true" />
+        </button>
+      </section>
+
+      <!-- EXPERIENCE SECTION -->
+      <section id="experience" aria-labelledby="experience-title">
+        <p class="section__text__p1">Explore My</p>
+        <h1 id="experience-title" class="title">Experience</h1>
+
+        <div class="experience-details-container">
+          <div class="about-containers">
+            <!-- First column: Frontend skills -->
+            <div class="details-container">
+              <h2 class="experience-sub-title">Frontend Development</h2>
+
+              <!-- A grid of small "skill" cards -->
+              <div class="article-container">
+                <!-- Each skill is one article (small content piece) -->
+                <article>
+                  <img src="./logos/checkmark.png" alt="" class="icon" aria-hidden="true" />
+                  <div>
+                    <h3>HTML</h3>
+                    <p>Experienced</p>
+                  </div>
+                </article>
+
+                <article>
+                  <img src="./logos/checkmark.png" alt="" class="icon" aria-hidden="true" />
+                  <div>
+                    <h3>CSS</h3>
+                    <p>Experienced</p>
+                  </div>
+                </article>
+
+                <article>
+                  <img src="./logos/checkmark.png" alt="" class="icon" aria-hidden="true" />
+                  <div>
+                    <h3>JavaScript</h3>
+                    <p>Basic</p>
+                  </div>
+                </article>
+
+              </div>
+            </div>
+
+            <!-- Second column: Programming-->
+            <div class="details-container">
+              <h2 class="experience-sub-title"> Programming</h2>
+
+              <div class="article-container">
+                <article>
+                  <img src="./logos/checkmark.png" alt="" class="icon" aria-hidden="true" />
+                  <div>
+                    <h3>Java</h3>
+                    <p>Experienced</p>
+                  </div>
+                </article>
+
+                <article>
+                  <img src="./logos/checkmark.png" alt="" class="icon" aria-hidden="true" />
+                  <div>
+                    <h3>C++</h3>
+                    <p>Basic</p>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Third Column: Coming Soong-->
+
+        <div class="experience-details-container">
+          <div class="about-containers">
+            <!-- First column: Frontend skills -->
+            <div class="details-container">
+              <h2 class="experience-sub-title">Tools</h2>
+
+              <!-- A grid of small "skill" cards -->
+              <div class="article-container">
+                <!-- Each skill is one article (small content piece) -->
+                <article>
+                  <img src="./logos/checkmark.png" alt="" class="icon" aria-hidden="true" />
+                  <div>
+                    <h3>VS Code</h3>
+                    <p>Experienced</p>
+                  </div>
+                </article>
+
+                <article>
+                  <img src="./logos/checkmark.png" alt="" class="icon" aria-hidden="true" />
+                  <div>
+                    <h3>Data Structures</h3>
+                    <p>Intermidiate</p>
+                  </div>
+                </article>
+
+              </div>
+            </div>
+        </div>
+
+
+        <!--Fourth Column: Coming Soon-->
+        <div class="experience-details-container">
+          <div class="about-containers">
+            <!-- First column: Frontend skills -->
+            <div class="details-container">
+              <h2 class="experience-sub-title">Coming Soon</h2>
+
+              <!-- A grid of small "skill" cards -->
+              <div class="article-container">
+                <!-- Each skill is one article (small content piece) -->
+                <article>
+                  <img src="./logos/checkmark.png" alt="" class="icon" aria-hidden="true" />
+                  <div>
+                    <h3>Algorithms</h3>
+                  </div>
+                </article>
+
+                <article>
+                  <img src="./logos/checkmark.png" alt="" class="icon" aria-hidden="true" />
+                  <div>
+                    <h3>AWS</h3>
+                  </div>
+                </article>
+
+                <article>
+                  <img src="./logos/checkmark.png" alt="" class="icon" aria-hidden="true" />
+                  <div>
+                    <h3>Swift</h3>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+
+
+          <!--Fith Column: Coming Soon-->
+        <div class="experience-details-container">
+          <div class="about-containers">
+            <!-- First column: Frontend skills -->
+            <div class="details-container">
+              <h2 class="experience-sub-title">Work Experience</h2>
+
+              <!-- A grid of small "skill" cards -->
+              <div class="article-container">
+                <!-- Each skill is one article (small content piece) -->
+                <article>
+                  <img src="./logos/checkmark.png" alt="" class="icon" aria-hidden="true" />
+                  <div>
+                    <h3>Barista - Tierra Mia (Sept 2022 - Present)</h3>
+                    <h6>Delivered fast, accurate service to 300+ customers per shift, trained new staff, and maintained quality under pressure.</h6>
+                  </div>
+                </article>
+
+                <article>
+                  <img src="./logos/checkmark.png" alt="" class="icon" aria-hidden="true" />
+                  <div>
+                    <h3>Package Handler - Amazon (Nov 2020 - May 2022)</h3>
+                    <h6>Processed 200+ packages per hour with 99%+ accuracy, improved workflow efficiency, and excelled in a high-pressure environment.</h6>
+                  </div>
+                </article>
+
+                <article>
+                  <img src="./logos/checkmark.png" alt="" class="icon" aria-hidden="true" />
+                  <div>
+                    <h3>Cashier & Stocker - Best Market (Sept 2019 - Nov 2020)</h3>
+                    <h6>Managed transactions and inventory for 300+ products daily while providing friendly, efficient customer service.</h6>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+
+
+        <button class="icon arrow" data-jump-projects type="button" aria-label="Scroll to Projects">
+          <img src="./logos/arrow.png" alt="" aria-hidden="true" />
+        </button>
+      </section>
+
+      <!-- PROJECTS SECTION -->
+      <section id="projects" aria-labelledby="projects-title">
+        <p class="section__text__p1">Browse My Recent</p>
+        <h1 id="projects-title" class="title">Projects</h1>
+
+        <div class="experience-details-container">
+          <div class="about-containers">
+            <!-- One project card -->
+            <article class="details-container color-container">
+              <div class="article-container">
+                <!--<img
+                  src="project 1 picture"
+                  alt="Screenshot of Project One"
+                  class="project-img"
+                />        future fixing   --> 
+              </div>
+              <h2 class="experience-sub-title project-title">School Projects</h2>
+              <div class="btn-container">
+                <a class="btn btn-color-2 project-btn" href="https://github.com/Angelriv-lar/School-Projects.git" target="_blank" rel="noopener noreferrer">GitHub </a>
+              </div>
+            </article>
+
+            <article class="details-container color-container">
+              <div class="article-container">
+              </div>
+              <h2 class="experience-sub-title project-title">Coming Soon</h2>
+              <p>Online Computer Science Roadmap</p>
+              <p>Storage Manager Application</p>
+              <!--<div class="btn-container">
+                <a class="btn btn-color-2 project-btn" href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a>
+              </div> -->
+            </article>
+          </div>
+        </div>
+
+        <button class="icon arrow" data-jump-contact type="button" aria-label="Scroll to Contact">
+          <img src="./logos/arrow.png" alt="" aria-hidden="true" />
+        </button>
+      </section>
+
+      <!-- CONTACT SECTION -->
+      <section id="contact" aria-labelledby="contact-title">
+        <p class="section__text__p1">Get in Touch</p>
+        <h1 id="contact-title" class="title">Contact Me</h1>
+
+        <!-- A simple box with email and LinkedIn -->
+        <div class="contact-info-upper-container">
+          <div class="contact-info-container">
+            <img
+              src="./logos/email.png"
+              alt=""
+              class="icon contact-icon email-icon"
+              aria-hidden="true"
+            />
+            <!-- Make sure the visible text matches the mailto address -->
+            <p>
+              <a href="mailto:examplemail@gmail.com">angelrvsl11@gmail.com</a>
+            </p>
+          </div>
+          
+          <!--
+          <div class="contact-info-container">
+            <img
+              src="./logos/linkedin.png"
+              alt=""
+              class="icon contact-icon"
+              aria-hidden="true"
+            />
+            <p>
+              <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </p>
+          </div>
+        -->
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER shows at the bottom of the page -->
+    <footer>
+      <!-- Repeat the navigation so people don't have to scroll up -->
+      <nav aria-label="Footer">
+        <div class="nav-links-container">
+          <ul class="nav-links" role="list">
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <p>Copyright &#169; <span id="year">2025</span> Angel Rivas. All Rights Reserved.</p>
+    </footer>
+
+    <!-- The behavior (interactivity) of the page -->
+    <script src="script.js"></script>
+  </body>
+</html>
