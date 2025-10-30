@@ -162,12 +162,24 @@
 
         <!-- Two columns: image + details -->
         <div class="section-container">
-          <div class="section__pic-container">
+          <div class="section__pic-container" id = "FixCropping">
             <img
               src="./logos/TreePicture.jpg"
               alt="Angel working on a laptop"
               class="about-pic"
             />
+            <style>
+              @media (max-width: 768px) {
+                #FixCropping {
+                  width: 100%;
+                  height: auto;
+                  max-height: 70svh;
+                  object-fit: contain;
+                  display: block;
+                  margin-inline: auto;
+              }
+            }
+            </style>
           </div>
 
           <div class="about-details-container">
