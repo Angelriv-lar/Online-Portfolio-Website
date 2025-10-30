@@ -110,25 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  // If you previously added .reveal to everything (e.g., 'body *'), clean it up:
-  const firstSection = document.querySelector('main > section:first-of-type');
-  if (firstSection) {
-    firstSection.querySelectorAll('.reveal, .reveal.show').forEach(el => {
-      el.classList.remove('reveal', 'show');
-    });
-  }
-
-  // Tag ONLY sections after the first one
-  const laterSections = document.querySelectorAll('main > section:not(:first-of-type)');
-  laterSections.forEach(section => {
-    // Option A: reveal the section's direct children (nicer, less janky)
-    section.querySelectorAll(':scope > *').forEach(el => el.classList.add('reveal'));
-
-    // If you prefer to reveal the entire section as one block, use this instead:
-    // section.classList.add('reveal');
-  });
-
-  // IntersectionObserver to reveal when in view
+  const els = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
@@ -136,9 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
         io.unobserve(e.target); // reveal once
       }
     });
-  }, { threshold: 0.12, rootMargin: '0px 0px -10% 0px' });
+  }, { threshold: 0.12 });
 
-  document.querySelectorAll('main > section:not(:first-of-type) .reveal, main > section:not(:first-of-type).reveal')
-    .forEach(el => io.observe(el));
+  els.forEach(el => io.observe(el));
 });
-
