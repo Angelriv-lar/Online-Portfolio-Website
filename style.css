@@ -680,3 +680,23 @@ h2 { font-size: var(--step-1); line-height: 1.2; }
   .container, main, .section-inner { max-width: 1200px; }
 }
 
+/* For fade/slide in */
+/* simple global reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 400ms ease, transform 400ms ease;
+}
+.reveal.show {
+  opacity: 1;
+  transform: none;
+}
+
+/* respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal.show {
+    transition: none;
+    transform: none;
+    opacity: 1;
+  }
+}
