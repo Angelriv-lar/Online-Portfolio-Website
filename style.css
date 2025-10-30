@@ -680,3 +680,37 @@ h2 { font-size: var(--step-1); line-height: 1.2; }
   .container, main, .section-inner { max-width: 1200px; }
 }
 
+
+/*FIX IMAGE CROPPING*/
+/* 1) Global safety: images never exceed their container */
+img {
+  max-width: 100%;
+  height: auto;          /* prevents stretching/cropping from fixed heights */
+  display: block;
+}
+
+/* 2) Mobile: keep images smaller and fully visible */
+@media (max-width: 768px) {
+  /* Tweak selectors to match your site (hero/project/card etc.) */
+  .hero img,
+  .project img,
+  .card img {
+    width: 100%;
+    height: auto !important;  /* undo any earlier fixed heights */
+    max-height: 60vh;         /* don’t get taller than the screen */
+    object-fit: contain;      /* show the whole image (no crop) */
+    margin-inline: auto;      /* center if narrower than container */
+  }
+}
+
+/* 3) If you use a framed thumbnail area, keep aspect without cropping */
+.thumb { aspect-ratio: 16 / 9; overflow: hidden; background: #f3f4f6; }
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;        /* contains image; may letterbox (no crop) */
+}
+
+/* 4) If any component previously forced fixed sizes, neutralize them */
+.hero img, .project img, .card img { max-width: 100%; }
+
