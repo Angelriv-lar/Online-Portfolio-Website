@@ -681,36 +681,39 @@ h2 { font-size: var(--step-1); line-height: 1.2; }
 }
 
 
-/*FIX IMAGE CROPPING*/
-/* 1) Global safety: images never exceed their container */
-img {
-  max-width: 100%;
-  height: auto;          /* prevents stretching/cropping from fixed heights */
-  display: block;
-}
-
-/* 2) Mobile: keep images smaller and fully visible */
+/* --- MOBILE IMAGE FIX (hard overrides) --- */
 @media (max-width: 768px) {
-  /* Tweak selectors to match your site (hero/project/card etc.) */
+  /* 1) Real <img> elements: never crop, never stretch */
+  img,
+  main img,
   .hero img,
   .project img,
-  .card img {
-    width: 100%;
-    height: auto !important;  /* undo any earlier fixed heights */
-    max-height: 60vh;         /* don’t get taller than the screen */
-    object-fit: contain;      /* show the whole image (no crop) */
-    margin-inline: auto;      /* center if narrower than container */
+  .card img,
+  .thumb img {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;          /* kills fixed heights */
+    max-height: 70svh !important;     /* never taller than the screen */
+    object-fit: contain !important;   /* show the whole image */
+    display: block !important;
+    margin-inline: auto !important;
+  }
+
+  /* 2) Kill common crop-causers on wrappers */
+  .hero, .project, .card, .thumb, figure, .img-wrap {
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
+  }
+
+  /* 3) If any images are set via CSS background */
+  .hero, .banner, [class*="bg-"], .bg-image {
+    background-size: contain !important;    /* avoid cropping */
+    background-position: center top !important;
   }
 }
 
-/* 3) If you use a framed thumbnail area, keep aspect without cropping */
-.thumb { aspect-ratio: 16 / 9; overflow: hidden; background: #f3f4f6; }
-.thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;        /* contains image; may letterbox (no crop) */
-}
+/* If you previously had global img sizes like width/height: 90%, neutralize them */
+img { max-width: 100%; height: auto !important; }
 
-/* 4) If any component previously forced fixed sizes, neutralize them */
-.hero img, .project img, .card img { max-width: 100%; }
 
