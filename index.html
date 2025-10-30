@@ -98,7 +98,10 @@
             The alt text describes the image for people using screen readers
             or if the image doesn't load.
           -->
-          <img src="./logos/CarPicture.png" alt="Headshot of Angel Rivas" />
+          <picture>
+            <source media = "(max-width: 768px)" srcset = "./logos/CarPicture.png">
+            <img src="./logos/CarPicture.png" alt="Headshot of Angel Rivas" />
+          </picture>
         </div>
 
         <!-- Text area on the right -->
