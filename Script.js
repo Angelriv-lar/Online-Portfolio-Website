@@ -89,3 +89,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+
+/* For everything to fade/slide */
+document.addEventListener('DOMContentLoaded', () => {
+  // 1) auto-tag everything in <main> with .reveal
+  document.querySelectorAll('body *').forEach(el => el.classList.add('reveal'));
+
+  // 2) reveal when in view (and also on initial load for what's visible)
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('show');
+        io.unobserve(e.target); // reveal once
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+});
